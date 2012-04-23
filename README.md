@@ -12,6 +12,7 @@ wrap your editable elements in a form).
 Usage
 =====
 The markup:
+
     <form>
         <div id="field1" class="editable">This is editable</div>
         <div id="another_field" class="editable"><strong>And this</strong>, too</div>
@@ -19,11 +20,13 @@ The markup:
 
 
 The code:
+
      $(".editable").editnibble();
 
 Tips
 ====
 To hide all the editors when the user hits escape:
+
     $(document).keyup(function(e) {
         if (e.keyCode == 27) { // escape
             $(".editable").editnibble('hideAllEditors');
