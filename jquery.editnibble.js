@@ -7,7 +7,6 @@
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
- *
  */
 var __jquery_editnibble_last_id = 1;
 function JqueryEditNibble(targets, options) {
@@ -53,6 +52,8 @@ function JqueryEditNibble(targets, options) {
 
         $("." + $this.opt.contentsWrapperClass, element).hide();
         $("." + $this.opt.editorWrapperClass, element).show();
+
+        $("." + $this.opt.editorWrapperClass, element).find('.editor-form-element').focus();
     };
 
     var _hide_all_editors = function($this) {
@@ -169,4 +170,3 @@ function JqueryEditNibble(targets, options) {
     };
 
 })(jQuery);
-
