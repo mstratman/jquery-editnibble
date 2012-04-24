@@ -46,14 +46,14 @@ function JqueryEditNibble(targets, options) {
         }
 
         var contents = $("." + $this.opt.contentsWrapperClass, element).html();
-        $("." + $this.opt.editorWrapperClass, element).find('.editor-form-element').val(
+        $("." + $this.opt.editorWrapperClass, element).find('.' + $this.opt.editorClass).val(
             $.trim(contents)
         );
 
         $("." + $this.opt.contentsWrapperClass, element).hide();
         $("." + $this.opt.editorWrapperClass, element).show();
 
-        $("." + $this.opt.editorWrapperClass, element).find('.editor-form-element').focus();
+        $("." + $this.opt.editorWrapperClass, element).find('.' + $this.opt.editorClass).focus();
     };
 
     var _hide_all_editors = function($this) {
@@ -62,7 +62,7 @@ function JqueryEditNibble(targets, options) {
         });
     };
     var _hide_editor = function($this, element) {
-        var contents = $("." + $this.opt.editorWrapperClass, element).find('.editor-form-element').val();
+        var contents = $("." + $this.opt.editorWrapperClass, element).find('.' + $this.opt.editorClass).val();
         
         $("." + $this.opt.contentsWrapperClass, element).html(contents);
 
@@ -105,7 +105,7 @@ function JqueryEditNibble(targets, options) {
             .append(
                 editor
                 .attr('name', element.attr('id'))
-                .addClass('editor-form-element')
+                .addClass($this.opt.editorClass)
                 .val(contents)
             )
             .hide()
@@ -160,6 +160,7 @@ function JqueryEditNibble(targets, options) {
 
     $.fn.editnibble.defaults = {
         editorWrapperClass: 'editor-wrapper',
+        editorClass: 'editor-form-element',
         contentsWrapperClass: 'content-wrapper',
         finishEditingEvent: 'blur', //e.g. blur, change, dblclick, click.
         hideEditorOnFinish: true,

@@ -23,6 +23,20 @@ The code:
 
      $(".editable").editnibble();
 
+Options
+=======
+These options can be passed to the `editnibble()` function. e.g. `$(".editable").editnibble({ editorClass: 'editor-form-element' });`
+
+        editorWrapperClass:   'editor-wrapper',
+        editorClass:          'editor-form-element',
+        contentsWrapperClass: 'content-wrapper',
+        finishEditingEvent:   'blur', //e.g. blur, change, dblclick, click.
+        hideEditorOnFinish:   true,
+        allowMultipleEditors: false,
+        preCreateEditors:     true   // Useful if you want the submitted form to contain
+                                     // all the editable fields, even if they were never
+                                     // edited by the user.
+
 Tips
 ====
 To hide all the editors when the user hits escape:
@@ -32,6 +46,14 @@ To hide all the editors when the user hits escape:
             $(".editable").editnibble('hideAllEditors');
         }
     });
+
+To get the textarea or input form element (for example, if you wanted
+to turn it into a rich text editor with ckeditor or another plugin),
+retrieve it by its class (`editor-form-element` or whatever you set it
+to with the `editorClass` option):
+
+    // e.g.
+    $(".editable .editor-form-element").ckeditor();
 
 
 Copyright and License
