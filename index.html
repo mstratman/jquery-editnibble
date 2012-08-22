@@ -46,38 +46,38 @@ wrap your editable elements in a form).</p>
 
 <p>The markup:</p>
 
-<pre><code>&lt;form&gt;
-    &lt;div id="field1" class="editable"&gt;This is editable&lt;/div&gt;
-    &lt;div id="another_field" class="editable"&gt;&lt;strong&gt;And this&lt;/strong&gt;, too&lt;/div&gt;
-&lt;/form&gt;
-</code></pre>
+<div class="highlight"><pre>    <span class="nt">&lt;form&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"field1"</span> <span class="na">class=</span><span class="s">"editable"</span><span class="nt">&gt;</span>This is editable<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"another_field"</span> <span class="na">class=</span><span class="s">"editable"</span><span class="nt">&gt;&lt;strong&gt;</span>And this<span class="nt">&lt;/strong&gt;</span>, too<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+</pre></div>
 
 <p>The code:</p>
 
-<pre><code> $(".editable").editnibble();
-</code></pre>
+<div class="highlight"><pre>     <span class="nx">$</span><span class="p">(</span><span class="s2">".editable"</span><span class="p">).</span><span class="nx">editnibble</span><span class="p">();</span>
+</pre></div>
 
 <h2>Options</h2>
 
 <p>These options can be passed to the <code>editnibble()</code> function. e.g. <code>$(".editable").editnibble({ editorClass: 'editor-form-element' });</code></p>
 
-<pre><code>    editorWrapperClass:   'editor-wrapper',
-    editorClass:          'editor-form-element',
-    contentsWrapperClass: 'content-wrapper',
-    finishEditingEvent:   'blur', //e.g. blur, change, dblclick, click.
-    hideEditorOnFinish:   true,
-    allowMultipleEditors: false,
-    preCreateEditors:     true   // Useful if you want the submitted form to contain
-                                 // all the editable fields, even if they were never
-                                 // edited by the user.
-</code></pre>
+<div class="highlight"><pre>        <span class="nx">editorWrapperClass</span><span class="o">:</span>   <span class="s1">'editor-wrapper'</span><span class="p">,</span>
+        <span class="nx">editorClass</span><span class="o">:</span>          <span class="s1">'editor-form-element'</span><span class="p">,</span>
+        <span class="nx">contentsWrapperClass</span><span class="o">:</span> <span class="s1">'content-wrapper'</span><span class="p">,</span>
+        <span class="nx">finishEditingEvent</span><span class="o">:</span>   <span class="s1">'blur'</span><span class="p">,</span> <span class="c1">//e.g. blur, change, dblclick, click.</span>
+        <span class="nx">hideEditorOnFinish</span><span class="o">:</span>   <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">allowMultipleEditors</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nx">preCreateEditors</span><span class="o">:</span>     <span class="kc">true</span>   <span class="c1">// Useful if you want the submitted form to contain</span>
+                                     <span class="c1">// all the editable fields, even if they were never</span>
+                                     <span class="c1">// edited by the user.</span>
+</pre></div>
 
 <h2>Methods</h2>
 
 <h3>hideAllEditors</h3>
 
-<pre><code>$(".editable").editnibble('hideAllEditors')
-</code></pre>
+<div class="highlight"><pre>    <span class="nx">$</span><span class="p">(</span><span class="s2">".editable"</span><span class="p">).</span><span class="nx">editnibble</span><span class="p">(</span><span class="s1">'hideAllEditors'</span><span class="p">)</span>
+</pre></div>
 
 <p>This stops editing, and hides all the editors, replacing them with
 their rendered content.</p>
@@ -88,12 +88,12 @@ their rendered content.</p>
 
 <p>To hide all the editors when the user hits escape:</p>
 
-<pre><code>$(document).keyup(function(e) {
-    if (e.keyCode == 27) { // escape
-        $(".editable").editnibble('hideAllEditors');
-    }
-});
-</code></pre>
+<div class="highlight"><pre>    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">keyup</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">==</span> <span class="mi">27</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// escape</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s2">".editable"</span><span class="p">).</span><span class="nx">editnibble</span><span class="p">(</span><span class="s1">'hideAllEditors'</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+</pre></div>
 
 <h3>Indicating something is editable</h3>
 
@@ -103,22 +103,22 @@ method is to change the background color and show a tooltip.</p>
 
 <p>For example, you might do the following:</p>
 
-<pre><code>&lt;style type="text/css"&gt;
-    .editable {
-        background-color:#FFFFFF;
-        cursor:text;
-    }
-    .editable:hover {
-        background-color:#FFFFCC;
-    }
-&lt;/style&gt;
-&lt;script type="text/javascript"&gt;
-    $(document).ready(function() {
-        $(".editable").attr('title', 'Click to edit');
-        $(".editable").editnibble();
-    });
-&lt;/script&gt;
-</code></pre>
+<div class="highlight"><pre>    <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+        <span class="nc">.editable</span> <span class="p">{</span>
+            <span class="k">background-color</span><span class="o">:</span><span class="m">#FFFFFF</span><span class="p">;</span>
+            <span class="k">cursor</span><span class="o">:</span><span class="k">text</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nc">.editable</span><span class="nd">:hover</span> <span class="p">{</span>
+            <span class="k">background-color</span><span class="o">:</span><span class="m">#FFFFCC</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="nt">&lt;/style&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+        <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s2">".editable"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'title'</span><span class="p">,</span> <span class="s1">'Click to edit'</span><span class="p">);</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s2">".editable"</span><span class="p">).</span><span class="nx">editnibble</span><span class="p">();</span>
+        <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+</pre></div>
 
 <h3>Retrieving textarea or input</h3>
 
@@ -127,9 +127,9 @@ to turn it into a rich text editor with ckeditor or another plugin),
 retrieve it by its class (<code>editor-form-element</code> or whatever you set it
 to with the <code>editorClass</code> option):</p>
 
-<pre><code>// e.g.
-$(".editable .editor-form-element").ckeditor();
-</code></pre>
+<div class="highlight"><pre>    <span class="c1">// e.g.</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">".editable .editor-form-element"</span><span class="p">).</span><span class="nx">ckeditor</span><span class="p">();</span>
+</pre></div>
 
 <h2>Copyright and License</h2>
 
