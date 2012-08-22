@@ -37,8 +37,20 @@ These options can be passed to the `editnibble()` function. e.g. `$(".editable")
                                      // all the editable fields, even if they were never
                                      // edited by the user.
 
+Methods
+=======
+
+## hideAllEditors
+
+    $(".editable").editnibble('hideAllEditors')
+
+This stops editing, and hides all the editors, replacing them with
+their rendered content.
+
 Tips
 ====
+## Escape key to stop editing
+
 To hide all the editors when the user hits escape:
 
     $(document).keyup(function(e) {
@@ -46,6 +58,32 @@ To hide all the editors when the user hits escape:
             $(".editable").editnibble('hideAllEditors');
         }
     });
+
+## Indicating something is editable
+
+When the user hovers over an editable element, it is a good idea to
+give them a clear indication that it is editable.  A really simple 
+method is to change the background color and show a tooltip.
+
+For example, you might do the following:
+
+    <style type="text/css">
+        .editable {
+            background-color:#FFFFFF;
+            cursor:text;
+        }
+        .editable:hover {
+            background-color:#FFFFCC;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".editable").attr('title', 'Click to edit');
+            $(".editable").editnibble();
+        });
+    </script>
+
+## Retrieving textarea or input
 
 To get the textarea or input form element (for example, if you wanted
 to turn it into a rich text editor with ckeditor or another plugin),
