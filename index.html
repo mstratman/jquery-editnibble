@@ -7,10 +7,38 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+    <script src="https://raw.github.com/mstratman/jquery-editnibble/master/jquery.editnibble.js" type="text/javascript"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <style type="text/css">
+        .editable {
+            background-color:#FFFFFF;
+            cursor:text;
+        }
+        .editable:hover {
+            background-color:#FFFFCC;
+        }
+        textarea.editor-form-element {
+            width:350px;
+            height:100px;
+        }
+
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".editable").attr('title', 'Click to edit');
+            $(".editable").editnibble();
+            $(document).keyup(function(e) {
+              if (e.keyCode == 27) { // escape
+                $(".editable").editnibble('hideAllEditors');
+              }
+            });
+        });
+    </script>
   </head>
   <body>
     <div class="wrapper">
@@ -32,6 +60,10 @@
 
 <p>This is an extremely simple plugin to allow you to edit
 any element in the DOM.</p>
+
+<div style="font-weight:bold">
+  <p class="editable">Here is an example.  Click this paragraph to edit me!</p>
+</div>
 
 <p>Unlike other editable plugins, this does not do any immediate Ajax
 submits, and does not destroy the form fields after editing.</p>
