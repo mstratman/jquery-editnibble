@@ -3,6 +3,9 @@
 This is an extremely simple plugin to allow you to edit
 any element in the DOM.
 
+Visit the webpage for an example:
+http://mstratman.github.com/jquery-editnibble/
+
 Unlike other editable plugins, this does not do any immediate Ajax
 submits, and does not destroy the form fields after editing.
 
