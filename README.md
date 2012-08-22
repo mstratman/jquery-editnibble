@@ -12,19 +12,23 @@ wrap your editable elements in a form).
 ## Usage
 The markup:
 
+```html
     <form>
         <div id="field1" class="editable">This is editable</div>
         <div id="another_field" class="editable"><strong>And this</strong>, too</div>
     </form>
-
+```
 
 The code:
 
+```javascript
      $(".editable").editnibble();
+```
 
 ## Options
 These options can be passed to the `editnibble()` function. e.g. `$(".editable").editnibble({ editorClass: 'editor-form-element' });`
 
+```javascript
         editorWrapperClass:   'editor-wrapper',
         editorClass:          'editor-form-element',
         contentsWrapperClass: 'content-wrapper',
@@ -34,12 +38,15 @@ These options can be passed to the `editnibble()` function. e.g. `$(".editable")
         preCreateEditors:     true   // Useful if you want the submitted form to contain
                                      // all the editable fields, even if they were never
                                      // edited by the user.
+```
 
 ## Methods
 
 ### hideAllEditors
 
+```javascript
     $(".editable").editnibble('hideAllEditors')
+```
 
 This stops editing, and hides all the editors, replacing them with
 their rendered content.
@@ -50,11 +57,13 @@ their rendered content.
 
 To hide all the editors when the user hits escape:
 
+```javascript
     $(document).keyup(function(e) {
         if (e.keyCode == 27) { // escape
             $(".editable").editnibble('hideAllEditors');
         }
     });
+```
 
 ### Indicating something is editable
 
@@ -64,6 +73,7 @@ method is to change the background color and show a tooltip.
 
 For example, you might do the following:
 
+```html
     <style type="text/css">
         .editable {
             background-color:#FFFFFF;
@@ -79,6 +89,7 @@ For example, you might do the following:
             $(".editable").editnibble();
         });
     </script>
+```
 
 ### Retrieving textarea or input
 
@@ -87,8 +98,10 @@ to turn it into a rich text editor with ckeditor or another plugin),
 retrieve it by its class (`editor-form-element` or whatever you set it
 to with the `editorClass` option):
 
+```javascript
     // e.g.
     $(".editable .editor-form-element").ckeditor();
+```
 
 
 ## Copyright and License
