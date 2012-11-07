@@ -96,6 +96,25 @@ For example, you might do the following:
     </script>
 ```
 
+### Escaping special HTML characters
+
+To prevent the contents from disappearing or rendering strangely,
+you may need to modify the contents when the editor is hidden.
+
+For example, you might do something like this:
+
+```javascript
+    $(".editable").editnibble({
+        onHide: function(val, context) {
+            return val
+                .replace(/&(?![a-zA-Z]+;)/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                ;
+        }
+    });
+```
+
 ### Multi-line textarea vs single-line input text box
 
 If the editable element has a `display` value of `inline`, editnibble
