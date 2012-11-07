@@ -37,6 +37,7 @@ These options can be passed to the `editnibble()` function. e.g. `$(".editable")
         contentsWrapperClass: 'content-wrapper',
         finishEditingEvent:   'blur', //e.g. blur, change, dblclick, click.
         hideEditorOnFinish:   true,
+        selectOnEdit:         false, // should we highlight the text when the eidtor appears?
         allowMultipleEditors: false,
         preCreateEditors:     true   // Useful if you want the submitted form to contain
                                      // all the editable fields, even if they were never

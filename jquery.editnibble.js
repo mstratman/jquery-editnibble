@@ -37,6 +37,11 @@ function JqueryEditNibble(targets, options) {
             }
 
             _show_editor($this, element);
+
+            if ($this.opt.selectOnEdit) {
+                var editor = $("." + $this.opt.editorWrapperClass, element).find('.' + $this.opt.editorClass);
+                editor.select();
+            }
         });
     };
 
@@ -45,15 +50,17 @@ function JqueryEditNibble(targets, options) {
             _hide_all_editors($this);
         }
 
-        var contents = $("." + $this.opt.contentsWrapperClass, element).html();
-        $("." + $this.opt.editorWrapperClass, element).find('.' + $this.opt.editorClass).val(
-            $.trim(contents)
-        );
+        var contentWrapper = $("." + $this.opt.contentsWrapperClass, element);
+        var editorWrapper = $("." + $this.opt.editorWrapperClass, element);
+        var editor = editorWrapper.find('.' + $this.opt.editorClass);
 
-        $("." + $this.opt.contentsWrapperClass, element).hide();
-        $("." + $this.opt.editorWrapperClass, element).show();
+        var contents = contentWrapper.html();
+        editor.val( $.trim(contents) );
 
-        $("." + $this.opt.editorWrapperClass, element).find('.' + $this.opt.editorClass).focus();
+        contentWrapper.hide();
+        editorWrapper.show();
+
+        editor.focus();
     };
 
     var _hide_all_editors = function($this) {
@@ -163,6 +170,7 @@ function JqueryEditNibble(targets, options) {
         editorClass: 'editor-form-element',
         contentsWrapperClass: 'content-wrapper',
         finishEditingEvent: 'blur', //e.g. blur, change, dblclick, click.
+        selectOnEdit : false,
         hideEditorOnFinish: true,
         allowMultipleEditors: false,
         preCreateEditors: true   // Useful if you want the submitted form to contain
