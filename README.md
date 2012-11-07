@@ -94,6 +94,12 @@ For example, you might do the following:
     </script>
 ```
 
+### Multi-line textarea vs single-line input text box
+
+If the editable element has a `display` value of `inline`, editnibble
+will provide an `input` tag (a one-line text box).  Otherwise, it
+will give you a multi-line `textarea` box.
+
 ### Retrieving textarea or input
 
 To get the textarea or input form element (for example, if you wanted
