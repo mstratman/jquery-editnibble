@@ -39,6 +39,7 @@ These options can be passed to the `editnibble()` function. e.g. `$(".editable")
         hideEditorOnFinish:   true,
         selectOnEdit:         false, // should we highlight the text when the editor appears?
         allowMultipleEditors: false,
+        onHide: function(textVal) { return textVal }, // Return something else to change it (e.g. to html-escape the contents)
         preCreateEditors:     true   // Useful if you want the submitted form to contain
                                      // all the editable fields, even if they were never
                                      // edited by the user.

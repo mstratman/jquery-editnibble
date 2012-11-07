@@ -69,7 +69,12 @@ function JqueryEditNibble(targets, options) {
         });
     };
     var _hide_editor = function($this, element) {
-        var contents = $("." + $this.opt.editorWrapperClass, element).find('.' + $this.opt.editorClass).val();
+        var editor = $("." + $this.opt.editorWrapperClass, element).find('.' + $this.opt.editorClass);
+        var contents = editor.val();
+
+        if (typeof $this.opt.onHide != "undefined") {
+            contents = $this.opt.onHide(contents);
+        }
         
         $("." + $this.opt.contentsWrapperClass, element).html(contents);
 
@@ -173,6 +178,7 @@ function JqueryEditNibble(targets, options) {
         selectOnEdit : false,
         hideEditorOnFinish: true,
         allowMultipleEditors: false,
+        onHide: function(textVal) { return textVal }, // Return something else to change it.
         preCreateEditors: true   // Useful if you want the submitted form to contain
                                  // all the editable fields, even if they were never
                                  // edited by the user.
