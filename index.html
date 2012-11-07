@@ -97,7 +97,7 @@ wrap your editable elements in a form).</p>
         <span class="nx">hideEditorOnFinish</span><span class="o">:</span>   <span class="kc">true</span><span class="p">,</span>
         <span class="nx">selectOnEdit</span><span class="o">:</span>         <span class="kc">false</span><span class="p">,</span> <span class="c1">// should we highlight the text when the editor appears?</span>
         <span class="nx">allowMultipleEditors</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nx">onHide</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">textVal</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">textVal</span> <span class="p">},</span> <span class="c1">// Return something else to change it (e.g. to html-escape the contents)</span>
+        <span class="nx">onHide</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">textVal</span><span class="p">, </span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">textVal</span> <span class="p">},</span> <span class="c1">// Return something else to change it (e.g. to html-escape the contents)</span>
         <span class="nx">preCreateEditors</span><span class="o">:</span>     <span class="kc">true</span>   <span class="c1">// Useful if you want the submitted form to contain</span>
                                      <span class="c1">// all the editable fields, even if they were never</span>
                                      <span class="c1">// edited by the user.</span>
