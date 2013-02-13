@@ -19,48 +19,48 @@ function JqueryEditNibble(targets, options) {
         });
     };
 
-    var _make_editable = function($this, target) {
+    var _make_editable = function($this, $target) {
         if ($this.opt.preCreateEditors) {
-            _create_editor($this, target);
+            _create_editor($this, $target);
         }
 
-        target.click(function() {
-            var element = $(this);
+        $target.click(function() {
+            var $element = $(this);
 
-            if (! element.data('has-editor')) {
-                _create_editor($this, element);
+            if (! $element.data('has-editor')) {
+                _create_editor($this, $element);
             }
 
             // Is the editor already visible?
-            if (element.find('.' + $this.opt.editorWrapperClass + ':visible').size()) {
+            if ($element.find('.' + $this.opt.editorWrapperClass + ':visible').size()) {
                 return;
             }
 
-            _show_editor($this, element);
+            _show_editor($this, $element);
 
             if ($this.opt.selectOnEdit) {
-                var editor = $("." + $this.opt.editorWrapperClass, element).find('.' + $this.opt.editorClass);
-                editor.select();
+                var $editor = $("." + $this.opt.editorWrapperClass, $element).find('.' + $this.opt.editorClass);
+                $editor.select();
             }
         });
     };
 
-    var _show_editor = function($this, element) {
+    var _show_editor = function($this, $element) {
         if (! $this.opt.allowMultipleEditors) {
             _hide_all_editors($this);
         }
 
-        var contentWrapper = $("." + $this.opt.contentsWrapperClass, element);
-        var editorWrapper = $("." + $this.opt.editorWrapperClass, element);
-        var editor = editorWrapper.find('.' + $this.opt.editorClass);
+        var $contentWrapper = $("." + $this.opt.contentsWrapperClass, $element);
+        var $editorWrapper = $("." + $this.opt.editorWrapperClass, $element);
+        var $editor = $editorWrapper.find('.' + $this.opt.editorClass);
 
-        var contents = contentWrapper.html();
-        editor.val( $.trim(contents) );
+        var contents = $contentWrapper.html();
+        $editor.val( $.trim(contents) );
 
-        contentWrapper.hide();
-        editorWrapper.show();
+        $contentWrapper.hide();
+        $editorWrapper.show();
 
-        editor.focus();
+        $editor.focus();
     };
 
     var _hide_all_editors = function($this) {
@@ -68,55 +68,55 @@ function JqueryEditNibble(targets, options) {
             _hide_editor($this, $(this).parent());
         });
     };
-    var _hide_editor = function($this, element) {
-        var editor = $("." + $this.opt.editorWrapperClass, element).find('.' + $this.opt.editorClass);
-        var contents = editor.val();
+    var _hide_editor = function($this, $element) {
+        var $editor = $("." + $this.opt.editorWrapperClass, $element).find('.' + $this.opt.editorClass);
+        var contents = $editor.val();
 
         if (typeof $this.opt.onHide != "undefined") {
-            contents = $this.opt.onHide(contents, element);
+            contents = $this.opt.onHide(contents, $element);
         }
         
-        $("." + $this.opt.contentsWrapperClass, element).html(contents);
+        $("." + $this.opt.contentsWrapperClass, $element).html(contents);
 
-        $("." + $this.opt.editorWrapperClass, element).hide();
-        $("." + $this.opt.contentsWrapperClass, element).show();
+        $("." + $this.opt.editorWrapperClass, $element).hide();
+        $("." + $this.opt.contentsWrapperClass, $element).show();
     };
 
-    var _create_editor = function($this, element) {
-        if (typeof element.attr('id') == 'undefined') {
-            element.attr('id', 'editnibble_' + __jquery_editnibble_last_id);
+    var _create_editor = function($this, $element) {
+        if (typeof $element.attr('id') == 'undefined') {
+            $element.attr('id', 'editnibble_' + __jquery_editnibble_last_id);
             __jquery_editnibble_last_id++;
         }
 
         var wrap_with = 'div';
-        var editor;
-        switch (element.css('display')) {
+        var $editor;
+        switch ($element.css('display')) {
             case "table-cell":
-                editor = $( document.createElement("textarea") );
+                $editor = $( document.createElement("textarea") );
                 break;
             case "inline":
-                editor = $( document.createElement("input") ).attr("type", "text");
+                $editor = $( document.createElement("input") ).attr("type", "text");
                 wrap_with = 'span';
                 break;
             default:
-                editor = $( document.createElement("textarea") );
+                $editor = $( document.createElement("textarea") );
                 break;
         }
 
         // Wrap existing contents so we can more effectively show
         // and hide them.
-        var contents = element.html();
-        element.html(
+        var contents = $element.html();
+        $element.html(
             $(document.createElement(wrap_with))
             .addClass($this.opt.contentsWrapperClass)
             .append(contents)
         );
-        element.append(
+        $element.append(
             $(document.createElement(wrap_with))
             .addClass($this.opt.editorWrapperClass)
             .append(
-                editor
-                .attr('name', element.attr('id'))
+                $editor
+                .attr('name', $element.attr('id'))
                 .addClass($this.opt.editorClass)
                 .val(contents)
             )
@@ -124,14 +124,14 @@ function JqueryEditNibble(targets, options) {
         );
 
         if ($this.opt.finishEditingEvent) {
-            editor.bind($this.opt.finishEditingEvent, function() {
+            $editor.bind($this.opt.finishEditingEvent, function() {
                 if ($this.opt.hideEditorOnFinish) {
-                    _hide_editor($this, element);
+                    _hide_editor($this, $element);
                 }
             });
         }
 
-        element.data('has-editor', true);
+        $element.data('has-editor', true);
     };
 
 
